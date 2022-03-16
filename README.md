@@ -84,3 +84,71 @@ import mypackage.*;
 
 - Packages can be placed in sub-packages
 - Dots uses to indicate subpackages
+
+### 6. Encapsulation
+
+> A design principle that separates the specification from implementation (hiding implementation from others)
+
+- Specification
+  - what the class/method does
+  - how to interact with it
+- Implementation:
+  - how the class/method performs (actual code)
+- Advantages
+  - unimportant details are hidden away, so make programs easier to understand
+  - implementation can be changed without affecting the interface, so make programs easier to modify
+  - ensure the publichsed API for the class states **_what_** the class will do but not how
+- Important principles
+  - make fields **_private_**
+  - make getters and setters **_public_**
+  - make helper (utility) methods **_private_** (unless there is utilities class)
+
+### 7. Inheritance
+
+> The inheritance relationship is an "**_is a_**" relationship
+
+- `extends` keyword for inheriting from superclass
+- A superclass' constructor is called with `super()` and its methods with `super.method()`
+- `super()` not needed if implementing a no parameter constructor
+
+### 8. Concrete and other classes
+
+| Concrete classes                 | Interface     | Abstract Classes                        |
+| -------------------------------- | ------------- | --------------------------------------- |
+| **_may_** have fields            | No fields     | **_may_** have fields                   |
+| specification and implementation | specification | at least one with is just specification |
+
+#### 8.1 Interface
+
+- Abstract methods only
+- Abstract methods are **_specifications_** consisting of a signature but no body
+- Cannot be instantiated as objects (cannot be executed)
+- `implements` keyword for inheriting from interfaces
+- All methods within an interface are `public` by default
+
+```Java
+public interface GraphicalEntity{
+  // get the shape's area
+  public float getArea();
+
+  // get the shape's perimeter
+  public float getPerimeter();
+}
+
+public class Rectangle implements GraphicalEntity{
+  private float length;
+  private float width;
+
+  public Rectangle(float l, float w){
+    this.length = l;
+    this.width = w;
+  }
+
+  public float getArea(){
+    return length * width;
+  }
+  public float getPerimeter(){
+    return length + width * 2;
+  }
+}
+```

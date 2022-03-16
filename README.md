@@ -7,6 +7,11 @@
 3. [Class](#3-class)
 4. [Object](#4-object-an-instance-of-a-class)
 5. [Package](#5-packages)
+6. [Encapsulation](#6-encapsulation)
+7. [Inheritance](#7-inheritance)
+8. [Concrete and other classes](#8-concrete-and-other-classes)
+9. [Polymorphism](#9-polymorphism)
+10. [Enum](#10-enumerate)
 
 ---
 

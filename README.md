@@ -152,3 +152,126 @@ public class Rectangle implements GraphicalEntity{
   }
 }
 ```
+
+- Importance
+  1. each implementation is very different
+  1. act as contract
+     - each implementing clas **HAS** to provide implementation
+     - calling class knows that method is being implemented
+  1. multiple inheritance: a Java class can only **extend** one class, while you can implement any number of interfaces
+
+#### 8.2 Abstract class
+
+> Abstract class is a class that implements some **member fields** and **methods** but leaves others abstract
+
+- `abstract` keyword
+- child class **must** implement abstract classes but don't have to implement non-abstract classes
+- cannot be instantiated
+
+```Java
+public abstract class FileReader{
+  private String filename;
+
+  public Filereader(String fn){
+    this.filename = fn;
+
+    public String getFilename(){
+      return filename;
+    }
+
+    public abstract void readFile();
+  }
+}
+
+public class CSVReader extends FileReader{
+  public CSVReader(String fn){
+    super(fn);
+  }
+
+  public void readFile(){
+    /* code for read CSV file */
+  }
+}
+
+```
+
+- Importance
+  1. shred fields and methods
+  2. benefits of OOP
+  3. no need for subclasses to implement non-abstract method
+
+### 9. Polymorphism
+
+- Apply the same operation on different types with common ancestor in the type hierarchy
+- making common operations available in an identical form in other different classes
+- `override`
+
+### 10. Enumerate
+
+- A special class type whose fields are **constants**
+- `enum` keyword
+
+```Java
+public class EnumExample{
+  public enum Day{
+  SUNDAY,
+  MONDAY,
+  TUESDAY,
+  WEDNESDAY,
+  THURSDAY,
+  FRIDAY,
+  SATURDAY
+}
+
+public static void printDayGreeting(Day day){
+  if(day == Day.FRIDAY){
+    System.out.println("It's Friday!");
+  }else{
+    System.out.println("Some other day");
+  }
+}
+
+public static void main(String[] agrs){
+  Day myDay = Day.THURSDAY;
+
+  printDayGreeting(myDay);
+}
+}
+
+// output: Some other day
+
+```
+
+- `values` method can be used in **for** loops
+
+```Java
+for(Day d: Day.values()){
+  printDayGreeting(d);
+}
+```
+
+- `enum` classes can have other fields and methods
+- each constant can have a value(s) associated with it when it is declared
+- the value is passed to the constructor when an `enum` object is created
+
+```Java
+public enum Planet{
+  MERCURY (3.7),
+  VENUS (8.87),
+  EARTH (9.799);
+
+  private double gravity;
+
+  public Planet(double gravity){
+    this.gravity = gravity;
+  }
+  public double getGravity(){
+    return gravity;
+  }
+  public static void main(String[] args){
+    for(Planet p: Planet.values()){
+      System.out.println(p.getGravity());
+    }
+  }
+}
+```
